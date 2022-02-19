@@ -1,6 +1,6 @@
 import { Dropdown as DropDownRsuite } from "rsuite";
 import React from "react";
-import { Icon } from "./Icon";
+import { Icon } from "../Icon/Icon";
 import "./Dropdown.scss";
 
 export function Dropdown({ items, onSelect, defaultItem }) {

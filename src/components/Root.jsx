@@ -1,14 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import DateRangePicker from "rsuite/DateRangePicker";
+import { DateRangePicker, allowedRange } from "./common/DateRangePicker/DateRangePicker";
 import { getPlotData } from "../store/reducers/Plot/PlotThunks";
 import { setRangeDate } from "../store/reducers/RangeDate/RangeDateSlice";
 import { setCountry } from "../store/reducers/Сountry/СountrySlice";
-import { Dropdown } from "./common/Dropdown";
+import { Dropdown } from "./common/Dropdown/Dropdown";
 import { FlexContainer } from "./common/FlexContainer";
-import { Chart } from "./Chart";
 import { Button } from "rsuite";
-import "./Root.scss";
+import { Chart } from "./common/Chart";
+import { thirtyDaysAgo } from "../utils/thirtyDaysAgo";
+
 
 export function Root() {
     const dispatch = useDispatch();
@@ -55,12 +56,8 @@ export function Root() {
                     <Dropdown defaultItem={selectedCountry} items={country} onSelect={selectCountry} />
 
                     <DateRangePicker
-                        className="range-date-picker"
-                        character="-"
                         placeholder="Select Date Range"
-                        disabledDate={DateRangePicker.allowedRange(
-                            new Date((new Date().getTime() - 60*60*24*29*1000)), new Date()
-                        )}
+                        disabledDate={allowedRange(thirtyDaysAgo(), new Date())}
                         onOk={selectRange}
                         placement={"autoVerticalEnd"}
                         value={selectedRange}

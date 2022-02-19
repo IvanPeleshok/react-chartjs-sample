@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { thirtyDaysAgo } from "../../../utils/thirtyDaysAgo";
 
 const initialState = {
     loading: false,
     error: "",
-    selectedRange: [new Date((new Date().getTime() - 60*60*24*29*1000)), new Date()],
+    selectedRange: [thirtyDaysAgo(), new Date()],
 };
 
 export const RangeDateSlice = createSlice({

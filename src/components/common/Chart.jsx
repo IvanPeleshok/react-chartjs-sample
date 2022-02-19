@@ -1,6 +1,6 @@
-import { forwardRef, useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { SubCategories } from "../store/reducers/Categories/SubCategories";
+import { SubCategories } from "../../store/reducers/Categories/SubCategories";
 
 export const Chart = forwardRef(({ plot, categories }, ref) => {
     const [plotData, setPlotData] = useState({ datasets: [], labels: [] });
